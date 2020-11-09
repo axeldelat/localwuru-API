@@ -3,35 +3,39 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: false
   },
   presentation: {
     type: String,
-    required: true
+    required: false
   },
   city: {
     type: String,
-    required: true
+    required: false
   },
   state: {
     type: String,
-    required: true
+    required: false
   },
   country: {
     type: String,
-    required: true
+    required: false
   },
   phone: {
     type: Number,
-    required: true
+    required: false
   },
   email: {
     type: String,
-    required: true
+    required: false
   },
   bio: {
     type: String,
-    required: true
+    required: false
+  },
+  password: {
+    type: String,
+    required: false
   },
   paypalEmail: { // definir cuándo lo puede agregar
     type: String,
