@@ -1,7 +1,7 @@
 {
   "name": "localwuru-api",
   "version": "1.0.0",
-  "description": "localwuru app",
+  "description": "local-wuru-app",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
