@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  gender: {
+    type: String,
+    required: false
+  },
   paypalEmail: { // definir cuándo lo puede agregar
     type: String,
     required: false
