@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  IDphoto: { // revisar -----------------------------------
+  IdPhoto: { // revisar -----------------------------------
     type: String,
     required: false
   }
