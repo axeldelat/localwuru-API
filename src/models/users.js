@@ -5,6 +5,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  birthDate: {
+    type: Date, 
+    required: false
+  },
   presentation: {
     type: String,
     required: false
