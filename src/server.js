@@ -1,6 +1,7 @@
 // Definición del  servidor
 
 const express = require('express')
+const cors = require('cors')
 
 const experiencesRouter = require('./routes/experiences')
 const authRouter = require('./routes/auth')
@@ -8,6 +9,7 @@ const authRouter = require('./routes/auth')
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.use('/experiences', experiencesRouter)
 
