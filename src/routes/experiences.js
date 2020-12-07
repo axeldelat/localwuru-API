@@ -27,31 +27,37 @@ router.get('/', async (request, response) => {
 router.post('/', async (request, response) => {
   try {
     const {
-      nameExperience,
+      title,
       city,
       state,
       country,
-      availableSeason,
-      images,
-      typeOfExperience,
+      type,
+      image,
       duration,
-      suggestedBudget,
-      previousRecommendations,
-      experienceDescription
+      season,
+      budget,
+      categories,
+      recommendations,
+      description,
+      author,
+      bucketed
     } = request.body
 
     const newExperience = await experiences.create({
-      nameExperience,
+      title,
       city,
       state,
       country,
-      availableSeason,
-      images,
-      typeOfExperience,
+      type,
+      image,
       duration,
-      suggestedBudget,
-      previousRecommendations,
-      experienceDescription
+      season,
+      budget,
+      categories,
+      recommendations,
+      description,
+      author,
+      bucketed
     })
 
     response.json({
@@ -138,7 +144,3 @@ router.patch('/:id', async (request, response) => {
 })
 
 module.exports = router
-
-// exportamos nuestro router pero falata montarlo en el servidor.
-
-// Vamos en el post. No nos regresó lo que esperabamos.

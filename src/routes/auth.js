@@ -5,9 +5,9 @@ const router = express.Router()
 
 router.post('/signup', async (request, response) => {
   try {
-    const { email, password } = request.body
+    const { name, presentation, phone, email, password, paypalme, gender, birthdate, bio } = request.body
 
-    const userCreated = await users.signup(email, password)
+    const userCreated = await users.signup(name, presentation, phone, email, password, paypalme, gender, birthdate, bio)
 
     response.json({
       success: true,

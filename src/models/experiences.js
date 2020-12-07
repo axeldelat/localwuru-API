@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const experienceSchema = new mongoose.Schema({
-  nameExperience: {
+  title: {
     type: String,
     required: true
   },
@@ -17,15 +17,19 @@ const experienceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  availableSeason: {
+  season: {
     type: String,
     required: true
   },
-  images: { // revisar
-    type: String,
-    required: true
+  categories: {
+    type: Object,
+    required: false
   },
-  typeOfExperience: {
+  image: { // revisar
+    type: String,
+    required: false
+  },
+  type: {
     type: String,
     required: true
   },
@@ -33,17 +37,25 @@ const experienceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  suggestedBudget: {
+  budget: {
     type: String,
     required: true
   },
-  previousRecommendations: {
+  recommendations: {
     type: String,
     required: true
   },
-  experienceDescription: {
+  description: {
     type: String,
     required: true
+  },
+  author: {
+    type: String,
+    required:false
+  },
+  bucketed: {
+    type: Number,
+    required: null
   }
 })
 
