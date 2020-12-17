@@ -1,5 +1,6 @@
 const express = require('express')
 const users = require('../usecases/users')
+const auth = require('../middlewares/auth')
 
 const router = express.Router()
 
@@ -24,7 +25,7 @@ router.post('/signup', async (request, response) => {
     })
   }
 })
-router.get('/', async (request, response) => {
+router.get('/', auth, async (request, response) => {
   try {
     const allUsers = await users.getAll()
 
@@ -49,7 +50,7 @@ router.post('/login', async (request, response) => {
     const { email, password } = request.body
 
     const token = await users.login(email, password)
-
+    console.log(token)
     response.json({
       success: true,
       message: 'logged in',
@@ -57,6 +58,23 @@ router.post('/login', async (request, response) => {
         token,
         message: 'logged in correctly'
       }
+    })
+  } catch (error) {
+    response.status(401)
+    response.json({
+      success: false,
+      message: error.message
+    })
+  }
+})
+
+router.post('/profile', auth, async (request, response) => {
+  try {
+    const { authorization } = request.headers
+    const profile = await users.getUserInfo(authorization)
+    response.json({
+      success: true,
+      profile
     })
   } catch (error) {
     response.status(401)

@@ -24,6 +24,13 @@ async function login (email, password) {
   return jwt.create({ id: user._id })
 }
 
+async function getUserInfo (token) {
+  console.log(token)
+  const decoded = jwt.decode(token)
+  const user = await Users.findById(decoded.id)
+  return user
+}
+
 function getAll () {
   return Users.find()
 }
@@ -31,5 +38,6 @@ function getAll () {
 module.exports = {
   signup,
   getAll,
-  login
+  login,
+  getUserInfo
 }

@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     required: false
   },
   birthDate: {
-    type: Date, 
+    type: Date,
     required: false
   },
   presentation: {
