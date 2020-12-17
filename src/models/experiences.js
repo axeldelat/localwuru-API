@@ -21,13 +21,9 @@ const experienceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  categories: {
-    type: Object,
-    required: false
-  },
-  image: { // revisar
+  imgUrl: { // revisar
     type: String,
-    required: false
+    required: true
   },
   type: {
     type: String,
