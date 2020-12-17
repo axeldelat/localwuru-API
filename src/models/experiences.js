@@ -45,9 +45,9 @@ const experienceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  author: {
+  author_id: {
     type: String,
-    required:false
+    required: false
   },
   bucketed: {
     type: Number,

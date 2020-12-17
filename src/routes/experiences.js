@@ -1,8 +1,8 @@
 const express = require('express')
 const experiences = require('../usecases/experiences')
 const router = express.Router()
-
-// const auth = require('../middlewares/auth')
+const auth = require('../middlewares/auth')
+const users = require('../usecases/users')
 
 router.get('/', async (request, response) => {
   try {
@@ -24,8 +24,10 @@ router.get('/', async (request, response) => {
   }
 })
 
-router.post('/', async (request, response) => {
+router.post('/', auth, async (request, response) => {
   try {
+    const { authorization } = request.headers
+    const profile = await users.getUserInfo(authorization)
     const {
       title,
       city,
@@ -39,7 +41,6 @@ router.post('/', async (request, response) => {
       categories,
       recommendations,
       description,
-      author,
       bucketed
     } = request.body
 
@@ -56,7 +57,7 @@ router.post('/', async (request, response) => {
       categories,
       recommendations,
       description,
-      author,
+      author_id: profile._id,
       bucketed
     })
 
