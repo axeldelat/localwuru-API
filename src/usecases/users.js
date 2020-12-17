@@ -4,13 +4,14 @@ const bcrypt = require('../lib/bcrypt')
 
 const jwt = require('../lib/jwt')
 
-async function signup (email, password) {
+async function signup (name, presentation, phone, email, password, paypalme, gender, birthdate, bio) {
+
   const user = await Users.findOne({ email })
 
   if (user) { throw new Error('User is already registered') }
 
   const hash = bcrypt.hash(password)
-  return Users.create({ email, password: hash })
+  return Users.create({ name, presentation, phone, email, password: hash, paypalme, gender, birthdate, bio })
 }
 
 async function login (email, password) {

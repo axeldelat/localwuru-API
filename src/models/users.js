@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
+
   name: {
     type: String,
     required: false
@@ -10,18 +11,6 @@ const userSchema = new mongoose.Schema({
     required: false
   },
   presentation: {
-    type: String,
-    required: false
-  },
-  city: {
-    type: String,
-    required: false
-  },
-  state: {
-    type: String,
-    required: false
-  },
-  country: {
     type: String,
     required: false
   },
@@ -45,18 +34,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  paypalEmail: { // definir cuándo lo puede agregar
+  paypalme: { // definir cuándo lo puede agregar
     type: String,
     required: false
   },
-  image: { // definir cuándo puede agregarlo
+  avatar: { // definir cuándo puede agregarlo
     type: String,
     required: false
   },
-  IdPhoto: { // revisar -----------------------------------
-    type: String,
-    required: false
-  }
 })
 
 module.exports = mongoose.model('users', userSchema)
