@@ -85,4 +85,21 @@ router.post('/profile', auth, async (request, response) => {
   }
 })
 
+router.post('/experiences', auth, async (request, response) => {
+  try {
+    const { authorization } = request.headers
+    const experiences = await users.getExperiences(authorization)
+    response.json({
+      success: true,
+      experiences
+    })
+  } catch (error) {
+    response.status(401)
+    response.json({
+      success: false,
+      message: error.message
+    })
+  }
+})
+
 module.exports = router

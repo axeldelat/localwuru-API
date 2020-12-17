@@ -1,11 +1,11 @@
 const Users = require('../models/users')
+const Experiences = require('../models/experiences')
 
 const bcrypt = require('../lib/bcrypt')
 
 const jwt = require('../lib/jwt')
 
 async function signup (name, presentation, phone, email, password, paypalme, gender, birthdate, bio) {
-
   const user = await Users.findOne({ email })
 
   if (user) { throw new Error('User is already registered') }
@@ -32,6 +32,15 @@ async function getUserInfo (token) {
   return user
 }
 
+async function getExperiences (token) {
+  const decoded = jwt.decode(token)
+  const user = await Users.findById(decoded.id)
+  const experiences = await Experiences.find({
+    author_id: user._id
+  })
+  return experiences
+}
+
 function getAll () {
   return Users.find()
 }
@@ -40,5 +49,6 @@ module.exports = {
   signup,
   getAll,
   login,
-  getUserInfo
+  getUserInfo,
+  getExperiences
 }
