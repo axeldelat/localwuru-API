@@ -45,10 +45,15 @@ function getAll () {
   return Users.find()
 }
 
+function getById (id) {
+  return Users.findById(id)
+}
+
 module.exports = {
   signup,
   getAll,
   login,
   getUserInfo,
-  getExperiences
+  getExperiences,
+  getById
 }
