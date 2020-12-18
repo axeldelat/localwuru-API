@@ -91,7 +91,28 @@ router.get('/:id', async (request, response) => {
       }
     })
 
-    const selectedExperience = await experiences.getById(id)
+  } catch (error) {
+    response.status(400)
+    response.json({
+      success: false,
+      error: error.message
+    })
+  }
+})
+
+router.get('/author/:author_id', async (request, response) => {
+  try {
+    const { author_id } = request.params
+
+    const authorExperiences = await experiences.getByAuthor( author_id )
+
+    response.json({
+      success: true,
+      message: 'Author Experiences',
+      data: {
+        experience: authorExperiences
+      }
+    })
   } catch (error) {
     response.status(400)
     response.json({
