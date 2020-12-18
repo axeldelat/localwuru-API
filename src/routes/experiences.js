@@ -82,12 +82,14 @@ router.get('/:id', async (request, response) => {
     const { id } = request.params
 
     const experienceSelected = await experiences.getById(id)
+    const author = await users.getById(experienceSelected.author_id)
 
     response.json({
       success: true,
       message: 'experience selected',
       data: {
-        experience: experienceSelected
+        experience: experienceSelected,
+        author
       }
     })
 
